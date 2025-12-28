@@ -13,11 +13,11 @@ export default function HomePage() {
       <section className="container mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-12 sm:pb-20">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           <div>
-            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight text-balance">
+            <h1 className="text-2xl sm:text-4xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight text-balance">
               Easily <span className="text-[#c8ff00]">Trade</span> and Manage Your{" "}
               <span className="text-[#c8ff00]">Crypto Assets</span>
             </h1>
-            <p className="text-gray-400 text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed">
+            <p className="text-sm sm:text-lg mb-6 sm:mb-8 leading-relaxed text-gray-400">
               Trading crypto has never been simpler. Enjoy quick and effortless trading of your digital currencies
               portfolio today.
             </p>
@@ -119,7 +119,7 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className="container mx-auto px-4 sm:px-6 py-12 sm:py-20">
-        <div className="bg-gradient-to-br from-[#1a3a1a] to-[#0f2a0f] rounded-2xl sm:rounded-3xl p-8 sm:p-12 border border-white/5 relative overflow-hidden">
+        <div className="bg-gradient-to-br from-[#1a3a1a] to-[#0f2a0f] rounded-2xl sm:rounded-3xl p-6 sm:p-12 border border-white/5 relative overflow-hidden">
           {/* Decorative background */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-[#c8ff00] rounded-full blur-3xl" />
@@ -127,11 +127,11 @@ export default function HomePage() {
           </div>
 
           <div className="relative z-10 text-center max-w-3xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight text-balance">
+            <h2 className="text-xl sm:text-3xl lg:text-5xl font-bold text-white mb-3 sm:mb-6 leading-tight text-balance">
               STEP INTO THE <span className="text-[#c8ff00]">FUTURE</span> OF{" "}
               <span className="text-[#c8ff00]">DIGITAL FINANCE</span>
             </h2>
-            <p className="text-gray-400 text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 leading-relaxed">
+            <p className="text-xs sm:text-base lg:text-lg mb-4 sm:mb-8 leading-relaxed text-gray-400">
               Trade, invest, and manage your crypto assets FAST and SECURELY on{" "}
               <span className="text-[#c8ff00] font-semibold">SEEKER EXCHANGE</span>. Built to power Africa&apos;s next
               generation of digital wealth.

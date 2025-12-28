@@ -166,6 +166,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-[#c8ff00] transition-colors"
+                aria-label="X"
               >
                 <Twitter className="h-5 w-5" />
               </a>
@@ -174,6 +175,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-[#c8ff00] transition-colors"
+                aria-label="Instagram"
               >
                 <Instagram className="h-5 w-5" />
               </a>
@@ -182,6 +184,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-[#c8ff00] transition-colors"
+                aria-label="GitHub"
               >
                 <Github className="h-5 w-5" />
               </a>
@@ -190,6 +193,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-[#c8ff00] transition-colors"
+                aria-label="WhatsApp"
               >
                 <MessageCircle className="h-5 w-5" />
               </a>

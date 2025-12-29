@@ -49,7 +49,7 @@ export function Footer() {
     <>
       <footer className="bg-[#0a1f0a] border-t border-white/5 py-12">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
             <div>
               <SeekerLogo className="h-10 mb-4" />
               <p className="text-gray-400 text-sm leading-relaxed">
@@ -97,15 +97,12 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="text-white font-semibold mb-4">Support</h3>
+              <h3 className="text-white font-semibold mb-4">Resources</h3>
               <ul className="space-y-2">
                 <li>
-                  <button
-                    onClick={handleComingSoon}
-                    className="text-gray-400 hover:text-[#c8ff00] text-sm transition-colors"
-                  >
-                    Help Center
-                  </button>
+                  <a href="/resources" className="text-gray-400 hover:text-[#c8ff00] text-sm transition-colors">
+                    Learning Center
+                  </a>
                 </li>
                 <li>
                   <button
@@ -120,7 +117,7 @@ export function Footer() {
                     onClick={handleComingSoon}
                     className="text-gray-400 hover:text-[#c8ff00] text-sm transition-colors"
                   >
-                    Fees
+                    Trading Guides
                   </button>
                 </li>
                 <li>
@@ -128,7 +125,44 @@ export function Footer() {
                     onClick={handleComingSoon}
                     className="text-gray-400 hover:text-[#c8ff00] text-sm transition-colors"
                   >
-                    Security
+                    Security Tips
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-white font-semibold mb-4">Support</h3>
+              <ul className="space-y-2">
+                <li>
+                  <a href="/support" className="text-gray-400 hover:text-[#c8ff00] text-sm transition-colors">
+                    Help Center
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="mailto:support@seekerexchange.com"
+                    className="text-gray-400 hover:text-[#c8ff00] text-sm transition-colors"
+                  >
+                    Email Support
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://wa.me/message/6CAXWFYQZ7WUK1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-[#c8ff00] transition-colors"
+                  >
+                    WhatsApp Chat
+                  </a>
+                </li>
+                <li>
+                  <button
+                    onClick={handleComingSoon}
+                    className="text-gray-400 hover:text-[#c8ff00] text-sm transition-colors"
+                  >
+                    Community
                   </button>
                 </li>
               </ul>
@@ -155,6 +189,36 @@ export function Footer() {
                   {isSubscribing ? "..." : "→"}
                 </button>
               </form>
+            </div>
+
+            <div>
+              <h3 className="text-white font-semibold mb-4">Legal</h3>
+              <ul className="space-y-2">
+                <li>
+                  <button
+                    onClick={handleComingSoon}
+                    className="text-gray-400 hover:text-[#c8ff00] text-sm transition-colors"
+                  >
+                    Terms of Service
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={handleComingSoon}
+                    className="text-gray-400 hover:text-[#c8ff00] text-sm transition-colors"
+                  >
+                    Privacy Policy
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={handleComingSoon}
+                    className="text-gray-400 hover:text-[#c8ff00] text-sm transition-colors"
+                  >
+                    Cookie Policy
+                  </button>
+                </li>
+              </ul>
             </div>
           </div>
 

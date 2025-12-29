@@ -32,6 +32,9 @@ export function Header() {
               <button onClick={handleComingSoon} className="text-gray-300 hover:text-white text-sm transition-colors">
                 Features
               </button>
+              <Link href="/resources" className="text-gray-300 hover:text-white text-sm transition-colors">
+                Resources
+              </Link>
               <Link href="/support" className="text-gray-300 hover:text-white text-sm transition-colors">
                 Support
               </Link>

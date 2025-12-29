@@ -3,7 +3,7 @@ import { Footer } from "@/components/footer"
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-[#070c0e]">
+    <div className="min-h-screen bg-gradient-to-b from-[#0a1f0a] via-[#0f2a0f] to-[#0a1f0a]">
       <Header />
 
       <main className="pt-24">

@@ -49,7 +49,7 @@ export function Footer() {
     <>
       <footer className="bg-[#0a1f0a] border-t border-white/5 py-12">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
             <div className="lg:col-span-1">
               <SeekerLogo className="h-10 mb-4" />
               <p className="text-gray-400 text-sm leading-relaxed">
@@ -167,31 +167,6 @@ export function Footer() {
                 </li>
               </ul>
             </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 pb-8 border-b border-white/5">
-            <div>
-              <h3 className="text-white font-semibold mb-4">Stay Updated</h3>
-              <p className="text-gray-400 text-sm mb-4">Subscribe to get updates and exclusive offers</p>
-              <form onSubmit={handleSubscribe} className="flex gap-2">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  required
-                  disabled={isSubscribing}
-                  className="flex-1 px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#c8ff00]/50 disabled:opacity-50"
-                />
-                <button
-                  type="submit"
-                  disabled={isSubscribing}
-                  className="px-4 py-2 bg-[#c8ff00] text-black rounded-lg hover:bg-[#b8ef00] font-semibold transition-colors disabled:opacity-50"
-                >
-                  {isSubscribing ? "..." : "→"}
-                </button>
-              </form>
-            </div>
 
             <div>
               <h3 className="text-white font-semibold mb-4">Legal</h3>
@@ -222,6 +197,29 @@ export function Footer() {
                 </li>
               </ul>
             </div>
+          </div>
+
+          <div className="mb-8 pb-8 border-b border-white/5">
+            <h3 className="text-white font-semibold mb-4">Stay Updated</h3>
+            <p className="text-gray-400 text-sm mb-4">Subscribe to get updates and exclusive offers</p>
+            <form onSubmit={handleSubscribe} className="flex gap-2 max-w-md">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                required
+                disabled={isSubscribing}
+                className="flex-1 px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#c8ff00]/50 disabled:opacity-50"
+              />
+              <button
+                type="submit"
+                disabled={isSubscribing}
+                className="px-4 py-2 bg-[#c8ff00] text-black rounded-lg hover:bg-[#b8ef00] font-semibold transition-colors disabled:opacity-50"
+              >
+                {isSubscribing ? "..." : "→"}
+              </button>
+            </form>
           </div>
 
           <div className="flex flex-col md:flex-row items-center justify-between pt-8">

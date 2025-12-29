@@ -49,8 +49,8 @@ export function Footer() {
     <>
       <footer className="bg-[#0a1f0a] border-t border-white/5 py-12">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
-            <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+            <div className="lg:col-span-1">
               <SeekerLogo className="h-10 mb-4" />
               <p className="text-gray-400 text-sm leading-relaxed">
                 The world&apos;s most secure and futuristic crypto exchange platform. Trade smarter, faster, and safer
@@ -167,10 +167,12 @@ export function Footer() {
                 </li>
               </ul>
             </div>
+          </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 pb-8 border-b border-white/5">
             <div>
               <h3 className="text-white font-semibold mb-4">Stay Updated</h3>
-              <p className="text-gray-400 text-sm mb-4">Enter your email</p>
+              <p className="text-gray-400 text-sm mb-4">Subscribe to get updates and exclusive offers</p>
               <form onSubmit={handleSubscribe} className="flex gap-2">
                 <input
                   type="email"
@@ -222,7 +224,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/5">
+          <div className="flex flex-col md:flex-row items-center justify-between pt-8">
             <p className="text-gray-500 text-sm">© 2025 Seeker Exchange. All rights reserved.</p>
             <div className="flex items-center gap-4 mt-4 md:mt-0">
               <a
@@ -230,6 +232,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-[#c8ff00] transition-colors"
+                aria-label="X"
               >
                 <Twitter className="h-5 w-5" />
               </a>
@@ -238,6 +241,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-[#c8ff00] transition-colors"
+                aria-label="Instagram"
               >
                 <Instagram className="h-5 w-5" />
               </a>
@@ -246,6 +250,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-[#c8ff00] transition-colors"
+                aria-label="GitHub"
               >
                 <Github className="h-5 w-5" />
               </a>
@@ -254,6 +259,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-[#c8ff00] transition-colors"
+                aria-label="WhatsApp"
               >
                 <MessageCircle className="h-5 w-5" />
               </a>

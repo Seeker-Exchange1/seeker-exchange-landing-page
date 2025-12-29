@@ -99,7 +99,7 @@ export function WaitlistForm() {
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
           required
-          className="w-full bg-white/5 border border-white/20 text-white placeholder:text-gray-500 h-12 px-4 rounded-lg focus:ring-2 focus:ring-[#c8ff00]/50"
+          className="w-full bg-white/5 border-white/20 text-white placeholder:text-gray-500 h-12 px-4 rounded-lg focus:ring-2 focus:ring-[#c8ff00]/50"
           disabled={status === "loading"}
         />
         <p className="text-gray-500 text-xs mt-1">Please include country code (e.g., +234...)</p>
@@ -116,7 +116,7 @@ export function WaitlistForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="w-full bg-white/5 border border-white/20 text-white placeholder:text-gray-500 h-12 px-4 rounded-lg focus:ring-2 focus:ring-[#c8ff00]/50"
+          className="w-full bg-white/5 border-white/20 text-white placeholder:text-gray-500 h-12 px-4 rounded-lg focus:ring-2 focus:ring-[#c8ff00]/50"
           disabled={status === "loading"}
         />
       </div>
@@ -151,7 +151,7 @@ export function WaitlistForm() {
             className="flex items-center gap-2 text-white hover:text-[#c8ff00] transition-colors"
           >
             <Twitter className="w-6 h-6" />
-            <span className="text-sm">X</span>
+            <span className="text-sm">X (Twitter)</span>
           </a>
           <a
             href="https://www.instagram.com/_seeker_exchange"

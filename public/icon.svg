@@ -10,13 +10,11 @@
     }
   </style>
   <g clip-path="url(#clip0_7960_43945)">
-    <rect class="background" width="180" height="180" rx="37" fill="#0a1f0a"/>
-    <g transform="translate(45, 35)">
-      <!-- Lightning bolt / star shape in brand green -->
-      <path d="M45 0 L55 35 L90 35 L60 55 L70 90 L45 70 L20 90 L30 55 L0 35 L35 35 Z" 
-            fill="#c8ff00" 
-            stroke="#b4ff39" 
-            stroke-width="2"/>
+    <rect class="background" width="180" height="180" rx="37" fill="#000000"/>
+    <g transform="translate(50, 50)">
+      <!-- Angular S / Lightning bolt shape matching brand identity -->
+      <path d="M 40 0 L 80 0 L 80 30 L 50 30 L 80 60 L 80 90 L 0 90 L 0 60 L 30 60 L 0 30 L 0 0 L 40 0 Z" 
+            fill="#c8ff00"/>
     </g>
   </g>
   <defs>

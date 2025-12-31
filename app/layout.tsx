@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     "Trade crypto with speed, security, and trust. Seeker Exchange is Africa's most reliable cryptocurrency exchange platform.",
   icons: {
-    icon: "/icon.svg", // Fixed path - Next.js serves from public folder automatically
+    icon: [{ url: "/favicon.ico" }, { url: "/icon.svg", type: "image/svg+xml" }],
   },
     generator: 'v0.app'
 }

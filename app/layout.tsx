@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     "Trade crypto with speed, security, and trust. Seeker Exchange is Africa's most reliable cryptocurrency exchange platform.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icon.svg",
   },
     generator: 'v0.app'
 }

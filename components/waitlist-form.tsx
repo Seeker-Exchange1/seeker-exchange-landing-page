@@ -157,7 +157,7 @@ export function WaitlistForm() {
             <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden>
               <path d="M19.4 4.6a1 1 0 00-1.4-1.4L12 9.17 6 3.2A1 1 0 004.6 4.6L10.6 10.6 4.6 16.6a1 1 0 101.4 1.4l6-6 6 6a1 1 0 001.4-1.4l-6-6 6-6z" />
             </svg>
-            <span className="text-sm">X</span>
+            <span className="text-sm">Twitter</span>
           </a>
           <a
             href="https://www.instagram.com/_seeker_exchange"

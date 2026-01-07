@@ -19,21 +19,21 @@ export default function HomePage() {
         <Header />
 
         {/* Hero Section */}
-        <section className="container mx-auto px-4 sm:px-6 pt-32 sm:pt-40 pb-20 sm:pb-32">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-white text-pretty">
+        <section className="container mx-auto px-4 sm:px-6 pt-16 sm:pt-32 md:pt-40 pb-12 sm:pb-20 md:pb-32">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-16 items-center">
+            <div className="space-y-6 sm:space-y-8">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight text-white text-pretty">
                 Easily <span className="text-[#c8ff00]">Trade</span> and Manage Your{" "}
                 <span className="text-[#c8ff00]">Crypto Assets</span>
               </h1>
-              <p className="text-gray-300 text-lg sm:text-xl leading-relaxed max-w-xl">
+              <p className="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed max-w-xl">
                 Trading crypto has never been simpler. Enjoy quick and effortless trading of your digital currencies
                 portfolio today.
               </p>
               <Link href="/waitlist">
                 <Button
                   size="lg"
-                  className="bg-[#c8ff00] text-black hover:bg-[#b3e600] font-bold text-base px-10 py-6 rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-[#c8ff00]/30 uppercase tracking-wide"
+                  className="bg-[#c8ff00] text-black hover:bg-[#b3e600] font-bold text-sm sm:text-base px-6 sm:px-10 py-3 sm:py-6 rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-[#c8ff00]/30 uppercase tracking-wide"
                 >
                   GET STARTED
                 </Button>

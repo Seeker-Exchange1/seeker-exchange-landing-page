@@ -1,11 +1,10 @@
-import { createClient } from "@supabase/supabase-js"
 import { NextResponse } from "next/server"
 
 async function sendWelcomeEmail(email: string, full_name: string) {
   const resendApiKey = process.env.RESEND_API_KEY
 
   if (!resendApiKey) {
-    console.error("[v0] RESEND_API_KEY not configured - skipping email send")
+    console.log("[Waitlist] RESEND_API_KEY not configured - skipping email send")
     return { success: false, error: "Email service not configured" }
   }
 
@@ -72,15 +71,15 @@ async function sendWelcomeEmail(email: string, full_name: string) {
 
     if (!response.ok) {
       const errorData = await response.json()
-      console.error("[v0] Resend API error:", errorData)
+      console.error("[Waitlist] Resend API error:", errorData)
       return { success: false, error: errorData }
     }
 
     const data = await response.json()
-    console.log("[v0] Welcome email sent successfully:", data.id)
+    console.log("[Waitlist] Welcome email sent successfully:", data.id)
     return { success: true, data }
   } catch (error) {
-    console.error("[v0] Error sending welcome email:", error)
+    console.error("[Waitlist] Error sending welcome email:", error)
     return { success: false, error }
   }
 }
@@ -109,44 +108,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, message: "Please enter a valid email address." }, { status: 400 })
     }
 
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-    const supabaseKey = process.env.SUPABASE_SECRET_KEY
+    // TODO: Replace with your database/storage logic here.
+    // For now, just log the entry and send the welcome email.
+    console.log("[Waitlist] New entry:", { full_name, phone_number, email, country, followed_socials })
 
-    if (!supabaseUrl || !supabaseKey) {
-      console.error("[v0] Supabase environment variables not configured")
-      return NextResponse.json(
-        { success: false, message: "Configuration error. Please contact support." },
-        { status: 500 },
-      )
-    }
-
-    const supabase = createClient(supabaseUrl, supabaseKey, {
-      auth: {
-        persistSession: false,
-        autoRefreshToken: false,
-      },
-    })
-
-    const { error } = await supabase.from("waitlist").insert({
-      full_name,
-      phone_number,
-      email,
-      country,
-      followed_socials,
-    })
-
-    if (error) {
-      if (error.code === "23505") {
-        return NextResponse.json({ success: false, message: "This phone number is already on our waitlist!" })
-      }
-      console.error("[v0] Supabase error:", error)
-      return NextResponse.json({ success: false, message: "An error occurred. Please try again." }, { status: 500 })
-    }
-
+    // Send welcome email (optional - remove if you don't have RESEND_API_KEY set)
     const emailResult = await sendWelcomeEmail(email, full_name)
 
     if (!emailResult.success) {
-      console.warn("[v0] Failed to send welcome email, but waitlist entry was successful")
+      console.warn("[Waitlist] Failed to send welcome email, but proceeding with signup")
     }
 
     return NextResponse.json({
@@ -154,7 +124,7 @@ export async function POST(request: Request) {
       message: "You're in 🎉 Free airtime will be sent at launch",
     })
   } catch (error) {
-    console.error("[v0] Waitlist API error:", error)
+    console.error("[Waitlist] API error:", error)
     return NextResponse.json({ success: false, message: "An error occurred. Please try again." }, { status: 500 })
   }
 }

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { createClient } from "@supabase/supabase-js"
 
 async function sendWelcomeEmail(email: string, full_name: string) {
   const resendApiKey = process.env.RESEND_API_KEY
@@ -108,15 +109,50 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, message: "Please enter a valid email address." }, { status: 400 })
     }
 
-    // TODO: Replace with your database/storage logic here.
-    // For now, just log the entry and send the welcome email.
+    // Ensure Supabase env vars are present
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+
+    if (!supabaseUrl || !supabaseKey) {
+      console.error("[Waitlist] Supabase environment variables not configured (NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY missing)")
+      return NextResponse.json(
+        { success: false, message: "Configuration error. Please contact support." },
+        { status: 500 },
+      )
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseKey, {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+      },
+    })
+
     console.log("[Waitlist] New entry:", { full_name, phone_number, email, country, followed_socials })
+
+    // Insert into Supabase waitlist table
+    const { error } = await supabase.from("waitlist").insert({
+      full_name,
+      phone_number,
+      email,
+      country,
+      followed_socials,
+    })
+
+    if (error) {
+      // handle unique constraint (duplicate phone number)
+      if (error.code === "23505" || /unique/i.test(error.message || "")) {
+        return NextResponse.json({ success: false, message: "This phone number is already on our waitlist!" })
+      }
+      console.error("[Waitlist] Supabase error:", error)
+      return NextResponse.json({ success: false, message: "An error occurred. Please try again." }, { status: 500 })
+    }
 
     // Send welcome email (optional - remove if you don't have RESEND_API_KEY set)
     const emailResult = await sendWelcomeEmail(email, full_name)
 
     if (!emailResult.success) {
-      console.warn("[Waitlist] Failed to send welcome email, but proceeding with signup")
+      console.warn("[Waitlist] Failed to send welcome email, but waitlist entry was successful")
     }
 
     return NextResponse.json({

@@ -6,7 +6,7 @@ import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { Label } from "./ui/label"
 import { Checkbox } from "./ui/checkbox"
-import { Twitter, Instagram } from "lucide-react"
+// using inline SVGs for social icons so they inherit currentColor and hover styles
 
 const countries = [
   "Nigeria",
@@ -152,8 +152,11 @@ export function WaitlistForm() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-white hover:text-[#c8ff00] transition-all duration-300 hover:scale-110"
+            aria-label="X"
           >
-            <Twitter className="w-6 h-6" />
+            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M19.4 4.6a1 1 0 00-1.4-1.4L12 9.17 6 3.2A1 1 0 004.6 4.6L10.6 10.6 4.6 16.6a1 1 0 101.4 1.4l6-6 6 6a1 1 0 001.4-1.4l-6-6 6-6z" />
+            </svg>
             <span className="text-sm">X</span>
           </a>
           <a
@@ -161,8 +164,11 @@ export function WaitlistForm() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-white hover:text-[#c8ff00] transition-all duration-300 hover:scale-110"
+            aria-label="Instagram"
           >
-            <Instagram className="w-6 h-6" />
+            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3h10zM12 7.5A4.5 4.5 0 1012 16.5 4.5 4.5 0 0012 7.5zm0 2A2.5 2.5 0 1112 14a2.5 2.5 0 010-4.5zM17.5 6a.75.75 0 110 1.5A.75.75 0 0117.5 6z" />
+            </svg>
             <span className="text-sm">Instagram</span>
           </a>
         </div>

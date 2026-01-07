@@ -195,7 +195,7 @@ export default function HomePage() {
               <Link href="/waitlist">
                 <Button
                   size="lg"
-                  className="bg-[#c8ff00] text-black hover:bg-[#b3e600] font-bold text-base sm:text-lg px-10 sm:px-14 py-6 sm:py-7 rounded-full uppercase tracking-wide transition-all duration-300 hover:shadow-2xl hover:shadow-[#c8ff00]/40"
+                  className="bg-[#c8ff00] text-black hover:bg-[#b3e600] font-bold text-xs sm:text-sm md:text-base lg:text-lg px-4 sm:px-8 md:px-10 lg:px-14 py-3 sm:py-5 md:py-6 lg:py-7 rounded-full uppercase tracking-wide transition-all duration-300 hover:shadow-2xl hover:shadow-[#c8ff00]/40 whitespace-normal break-words max-w-full"
                 >
                   JOIN SEEKER EXCHANGE NOW
                 </Button>

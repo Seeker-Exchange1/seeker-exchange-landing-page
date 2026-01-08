@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Mona_Sans } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css"
 
 const monaSans = Mona_Sans({
@@ -41,6 +42,7 @@ export default function RootLayout({
       <body className={`${monaSans.variable} font-sans antialiased`}>
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

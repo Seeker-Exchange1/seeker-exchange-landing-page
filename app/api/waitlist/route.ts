@@ -128,7 +128,44 @@ export async function POST(request: Request) {
       },
     })
 
-    console.log("[Waitlist] New entry:", { full_name, phone_number, email, country, followed_socials })
+
+    // Check if phone number already exists
+    const { data: existingPhone, error: phoneCheckError } = await supabase
+      .from("waitlist")
+      .select("id")
+      .eq("phone_number", phone_number)
+      .limit(1)
+
+    if (phoneCheckError) {
+      console.error("[Waitlist] Error checking phone number:", phoneCheckError)
+      return NextResponse.json({ success: false, message: "An error occurred. Please try again." }, { status: 500 })
+    }
+
+    if (existingPhone && existingPhone.length > 0) {
+      return NextResponse.json(
+        { success: false, message: "This phone number is already on our waitlist!" },
+        { status: 409 },
+      )
+    }
+
+    // Check if email already exists
+    const { data: existingEmail, error: emailCheckError } = await supabase
+      .from("waitlist")
+      .select("id")
+      .eq("email", email)
+      .limit(1)
+
+    if (emailCheckError) {
+      console.error("[Waitlist] Error checking email:", emailCheckError)
+      return NextResponse.json({ success: false, message: "An error occurred. Please try again." }, { status: 500 })
+    }
+
+    if (existingEmail && existingEmail.length > 0) {
+      return NextResponse.json(
+        { success: false, message: "This email address is already on our waitlist!" },
+        { status: 409 },
+      )
+    }
 
     // Insert into Supabase waitlist table
     const { error } = await supabase.from("waitlist").insert({
@@ -140,10 +177,6 @@ export async function POST(request: Request) {
     })
 
     if (error) {
-      // handle unique constraint (duplicate phone number)
-      if (error.code === "23505" || /unique/i.test(error.message || "")) {
-        return NextResponse.json({ success: false, message: "This phone number is already on our waitlist!" })
-      }
       console.error("[Waitlist] Supabase error:", error)
       return NextResponse.json({ success: false, message: "An error occurred. Please try again." }, { status: 500 })
     }

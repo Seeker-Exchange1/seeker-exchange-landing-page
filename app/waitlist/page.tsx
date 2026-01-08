@@ -1,6 +1,6 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { WaitlistForm } from "@/components/waitlist-form"
+import WaitlistForm from "@/components/waitlist-form"
 
 export default function WaitlistPage() {
   return (

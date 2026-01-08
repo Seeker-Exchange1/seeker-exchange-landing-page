@@ -1,13 +1,13 @@
 "use client"
 
-import type React from "react"
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { Label } from "./ui/label"
 import { Checkbox } from "./ui/checkbox"
 // using inline SVGs for social icons so they inherit currentColor and hover styles
 
+// Countries list
 const countries = [
   "Nigeria",
   "Ghana",
@@ -22,20 +22,29 @@ const countries = [
   "Other",
 ]
 
-export function WaitlistForm() {
-  const [fullName, setFullName] = useState("")
-  const [phoneNumber, setPhoneNumber] = useState("")
-  const [email, setEmail] = useState("")
-  const [country, setCountry] = useState("Nigeria")
-  const [followedSocials, setFollowedSocials] = useState(false)
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
-  const [message, setMessage] = useState("")
 
+
+
+export default function WaitlistForm() {
+  const [fullName, setFullName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [country, setCountry] = useState("Nigeria");
+  const [followedSocials, setFollowedSocials] = useState(false);
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+
+  // ...existing code...
+
+
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // Submit handler directly submits form data
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setStatus("loading")
-    setMessage("")
-
+    e.preventDefault();
+    setStatus("loading");
+    setMessage("");
     try {
       const response = await fetch("/api/waitlist", {
         method: "POST",
@@ -43,38 +52,41 @@ export function WaitlistForm() {
         body: JSON.stringify({
           full_name: fullName,
           phone_number: phoneNumber,
-          email: email,
+          email,
           country,
           followed_socials: followedSocials,
         }),
-      })
-
-      const result = await response.json()
-
+      });
+      const result = await response.json();
       if (result.success) {
-        setStatus("success")
-        setMessage(result.message)
-        // Clear form on success
-        setFullName("")
-        setPhoneNumber("")
-        setEmail("")
-        setCountry("Nigeria")
-        setFollowedSocials(false)
+        setStatus("success");
+        setMessage(result.message);
+        setFullName("");
+        setPhoneNumber("");
+        setEmail("");
+        setCountry("Nigeria");
+        setFollowedSocials(false);
       } else {
-        setStatus("error")
-        setMessage(result.message)
+        setStatus("error");
+        setMessage(result.message);
       }
-    } catch (error) {
-      setStatus("error")
-      setMessage("An error occurred. Please try again.")
+    } catch {
+      setStatus("error");
+      setMessage("An error occurred. Please try again.");
     }
-  }
+  };
+
+
 
   return (
     <form
+      ref={formRef}
       onSubmit={handleSubmit}
       className="max-w-2xl mx-auto space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700"
     >
+
+
+      {/* Full Name */}
       <div className="text-left">
         <Label htmlFor="fullName" className="text-white mb-2 block">
           Full Name <span className="text-[#c8ff00]">*</span>
@@ -86,11 +98,12 @@ export function WaitlistForm() {
           value={fullName}
           onChange={(e) => setFullName(e.target.value)}
           required
-          className="w-full bg-white/5 border-white/20 text-white placeholder:text-gray-500 h-12 px-4 rounded-lg focus:ring-2 focus:ring-[#c8ff00]/50 transition-all duration-300 focus:scale-[1.02]"
           disabled={status === "loading"}
+          className="w-full bg-white/5 border-white/20 text-white placeholder:text-gray-500 h-12 px-4 rounded-lg focus:ring-2 focus:ring-[#c8ff00]/50 transition-all duration-300 focus:scale-[1.02]"
         />
       </div>
 
+      {/* Phone Number */}
       <div className="text-left">
         <Label htmlFor="phoneNumber" className="text-white mb-2 block">
           Phone Number <span className="text-[#c8ff00]">*</span>
@@ -102,12 +115,15 @@ export function WaitlistForm() {
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
           required
-          className="w-full bg-white/5 border-white/20 text-white placeholder:text-gray-500 h-12 px-4 rounded-lg focus:ring-2 focus:ring-[#c8ff00]/50 transition-all duration-300 focus:scale-[1.02]"
           disabled={status === "loading"}
+          className="w-full bg-white/5 border-white/20 text-white placeholder:text-gray-500 h-12 px-4 rounded-lg focus:ring-2 focus:ring-[#c8ff00]/50 transition-all duration-300 focus:scale-[1.02]"
         />
-        <p className="text-gray-500 text-xs mt-1">Please include country code (e.g., +234...)</p>
+        <p className="text-gray-500 text-xs mt-1">
+          Please include country code (e.g., +234...)
+        </p>
       </div>
 
+      {/* Email */}
       <div className="text-left">
         <Label htmlFor="email" className="text-white mb-2 block">
           Email <span className="text-[#c8ff00]">*</span>
@@ -119,11 +135,12 @@ export function WaitlistForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="w-full bg-white/5 border-white/20 text-white placeholder:text-gray-500 h-12 px-4 rounded-lg focus:ring-2 focus:ring-[#c8ff00]/50 transition-all duration-300 focus:scale-[1.02]"
           disabled={status === "loading"}
+          className="w-full bg-white/5 border-white/20 text-white placeholder:text-gray-500 h-12 px-4 rounded-lg focus:ring-2 focus:ring-[#c8ff00]/50 transition-all duration-300 focus:scale-[1.02]"
         />
       </div>
 
+      {/* Country */}
       <div className="text-left">
         <Label htmlFor="country" className="text-white mb-2 block">
           Country <span className="text-[#c8ff00]">*</span>
@@ -133,8 +150,8 @@ export function WaitlistForm() {
           value={country}
           onChange={(e) => setCountry(e.target.value)}
           required
-          className="w-full bg-white/5 border border-white/20 text-white h-12 px-4 rounded-lg focus:ring-2 focus:ring-[#c8ff00]/50 focus:outline-none transition-all duration-300 focus:scale-[1.02]"
           disabled={status === "loading"}
+          className="w-full bg-white/5 border border-white/20 text-white h-12 px-4 rounded-lg focus:ring-2 focus:ring-[#c8ff00]/50 transition-all duration-300 focus:scale-[1.02]"
         >
           {countries.map((c) => (
             <option key={c} value={c} className="bg-[#0f2a0f] text-white">
@@ -144,7 +161,8 @@ export function WaitlistForm() {
         </select>
       </div>
 
-      <div className="bg-white/5 rounded-lg p-6 border border-white/10 transition-all duration-300 hover:bg-white/10 hover:border-white/20">
+      {/* Social icons and confirmation */}
+      <div className="bg-white/5 rounded-lg p-6 border border-white/10">
         <p className="text-white text-sm mb-4">Follow us on social media:</p>
         <div className="flex gap-4 mb-6 justify-center">
           <a
@@ -172,39 +190,38 @@ export function WaitlistForm() {
             <span className="text-sm">Instagram</span>
           </a>
         </div>
-
         <div className="flex items-start gap-3">
           <Checkbox
             id="followedSocials"
             checked={followedSocials}
-            onCheckedChange={(checked) => setFollowedSocials(checked as boolean)}
-            className="mt-1 border-white/40 data-[state=checked]:bg-[#c8ff00] data-[state=checked]:border-[#c8ff00] transition-all duration-300"
+            onCheckedChange={(checked) =>
+              setFollowedSocials(checked as boolean)
+            }
             disabled={status === "loading"}
+            className="mt-1 border-white/40 data-[state=checked]:bg-[#c8ff00] data-[state=checked]:border-[#c8ff00]"
           />
-          <Label htmlFor="followedSocials" className="text-white text-sm leading-relaxed cursor-pointer">
+          <Label
+            htmlFor="followedSocials"
+            className="text-white text-sm cursor-pointer"
+          >
             I confirm I have followed Seeker Exchange on X and Instagram <span className="text-[#c8ff00]">*</span>
           </Label>
         </div>
       </div>
 
+      {/* Submit */}
       <Button
         type="submit"
         disabled={status === "loading" || !followedSocials}
-        className="w-full bg-[#c8ff00] text-black hover:bg-[#b8ef00] font-semibold h-12 rounded-lg text-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#c8ff00]/20"
+        className="w-full bg-[#c8ff00] text-black hover:bg-[#b8ef00] font-semibold h-12 rounded-lg text-lg disabled:opacity-50"
       >
-        {status === "loading" ? (
-          <span className="flex items-center gap-2">
-            <span className="inline-block w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
-            Submitting...
-          </span>
-        ) : (
-          "Join Waitlist"
-        )}
+        {status === "loading" ? "Submitting..." : "Join Waitlist"}
       </Button>
 
+      {/* Message */}
       {message && (
         <p
-          className={`mt-4 text-center animate-in fade-in slide-in-from-bottom-2 duration-500 ${
+          className={`mt-4 text-center ${
             status === "success" ? "text-[#c8ff00]" : "text-red-400"
           }`}
         >

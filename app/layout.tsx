@@ -40,6 +40,8 @@ export default function RootLayout({
       </head>
       <body className={`${monaSans.variable} font-sans antialiased`}>
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

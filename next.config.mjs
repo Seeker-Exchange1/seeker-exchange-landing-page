@@ -6,12 +6,11 @@ const nextConfig = {
     unoptimized: true,
   },
   experimental: {
-    turbo: false,
     serverActions: {
       allowedOrigins: [
-        'v0.app',
-        '*.vusercontent.net',
-        'localhost:3000',
+        "v0.app",
+        "*.vusercontent.net",
+        "localhost:3000",
       ],
     },
   },

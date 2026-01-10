@@ -1,9 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Mona_Sans } from "next/font/google"
-import Script from "next/script";
-
-// ...existing code...
+import Script from "next/script"
 import "./globals.css"
 
 const monaSans = Mona_Sans({
@@ -16,9 +14,7 @@ export const metadata: Metadata = {
   description:
     "Trade crypto with speed, security, and trust. Seeker Exchange is Africa's most reliable cryptocurrency exchange platform.",
   icons: {
-    icon: [
-      { url: "/favicon.png", type: "image/png" },
-    ],
+    icon: [{ url: "/favicon.png", type: "image/png" }],
   },
 }
 
@@ -38,18 +34,27 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        {/* Viewport */}
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
 
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CPD4MP64T0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-CPD4MP64T0');
-</script>
+        {/* Google Analytics */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-CPD4MP64T0"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-CPD4MP64T0');
+          `}
+        </Script>
       </head>
+
       <body className={`${monaSans.variable} font-sans antialiased`}>
         {children}
         <Analytics />

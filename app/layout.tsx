@@ -1,6 +1,8 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Mona_Sans } from "next/font/google"
+import Script from "next/script";
+
 // ...existing code...
 import "./globals.css"
 
@@ -37,6 +39,16 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CPD4MP64T0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CPD4MP64T0');
+</script>
       </head>
       <body className={`${monaSans.variable} font-sans antialiased`}>
         {children}

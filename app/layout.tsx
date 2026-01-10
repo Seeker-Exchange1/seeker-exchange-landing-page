@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Mona_Sans } from "next/font/google"
 import Script from "next/script"
+import VercelAnalytics from "../components/VercelAnalytics"
 import "./globals.css"
 
 const monaSans = Mona_Sans({
@@ -28,22 +29,16 @@ export const viewport = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="en">
       <head>
-        {/* Viewport */}
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, viewport-fit=cover"
-        />
-
-        {/* Google Analytics */}
         <Script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-CPD4MP64T0"></Script>
+          src="https://www.googletagmanager.com/gtag/js?id=G-CPD4MP64T0"
+        />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -56,8 +51,7 @@ export default function RootLayout({
 
       <body className={`${monaSans.variable} font-sans antialiased`}>
         {children}
-        <Analytics />
-        <SpeedInsights />
+        <VercelAnalytics />
       </body>
     </html>
   )
